@@ -13,6 +13,11 @@ RSpec.feature "User can view tickets" do
     FactoryGirl.create(:ticket, project: ie, name: "Standards Compliance",
                        description: "Isn't a joke.", author: author)
 
+    assign_role!(author, :viewer, sublime)
+    assign_role!(author, :viewer, ie)
+
+    login_as(author)
+
     visit '/'
   end
 
