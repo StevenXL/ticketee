@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "User can edit existing ticket" do
+  let(:author)  { FactoryGirl.create(:user) }
   let(:project) { FactoryGirl.create(:project) }
-  let(:ticket)  { FactoryGirl.create(:ticket, project: project) }
+  let(:ticket)  { FactoryGirl.create(:ticket, project: project, author: author) }
 
   before(:each) do
     visit project_ticket_path(project, ticket)
